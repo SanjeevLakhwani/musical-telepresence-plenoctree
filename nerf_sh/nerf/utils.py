@@ -31,13 +31,20 @@ from PIL import Image
 import yaml
 from tqdm import tqdm
 from nerf_sh.nerf import datasets
+from flax import struct
+from flax.training import train_state
 
 INTERNAL = False
 
 
-@flax.struct.dataclass
-class TrainState:
-    optimizer: flax.optim.Optimizer
+# @flax.struct.dataclass
+# class TrainState:
+#     optimizer: flax.optim.Optimizer
+
+@struct.dataclass
+class TrainState(train_state.TrainState):
+    # Add any additional fields you need here
+    pass
 
 
 @flax.struct.dataclass
